@@ -1,5 +1,5 @@
 # CV-Projects-GitHub
  
 This repository contains the following projects:
-* [Voters’ Database Management System] (Voters_ db project)
+* [Voters’ Database Management System](Voters_ db project)
 
