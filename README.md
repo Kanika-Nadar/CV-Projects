@@ -1,3 +1,5 @@
 # CV-Projects-GitHub
  
-These are a collection of all projects that I have mentioned in my CV.
+This repository contains the following projects:
+* **Voters’ Database Management System**
+
