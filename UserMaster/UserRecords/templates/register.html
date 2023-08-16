@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+    
+    <title>Register</title>
+    <style>
+
+      
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Noto Sans", sans-serif;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(206, 229, 237,255);
+      }
+      .container {
+        position: relative;
+        max-width: 700px;
+        width: 100%;
+        background: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+      .container header {
+        font-size: 1.5rem;
+        color: #333;
+        font-weight: 500;
+        text-align: center;
+      }
+      .container .form {
+        margin-top: 30px;
+      }
+      .form .input-box {
+        width: 100%;
+        margin-top: 20px;
+      }
+      .input-box label {
+        color: #333;
+      }
+      .form :where(.input-box input, .select-box) {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        outline: none;
+        font-size: 1rem;
+        color: #707070;
+        margin-top: 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 0 15px;
+      }
+      .input-box input:focus {
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+      }
+      .form .column {
+        display: flex;
+        column-gap: 15px;
+      }
+      .form .gender-box {
+        margin-top: 20px;
+      }
+      .gender-box h3 {
+        color: #333;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-bottom: 8px;
+      }
+      .form :where(.gender-option, .gender) {
+        display: flex;
+        align-items: center;
+        column-gap: 50px;
+        flex-wrap: wrap;
+      }
+      .form .gender {
+        column-gap: 5px;
+      }
+      .gender input {
+        accent-color: rgb(130, 106, 251);
+      }
+      .form :where(.gender input, .gender label) {
+        cursor: pointer;
+      }
+      .gender label {
+        color: #707070;
+      }
+      .address :where(input, .select-box) {
+        margin-top: 15px;
+      }
+      .select-box select {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        border: none;
+        color: #707070;
+        font-size: 1rem;
+      }
+      .form button {
+        height: 55px;
+        width: 100%;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-top: 30px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: #3a7fc2;
+      }
+      .form button:hover {
+        background: #2e669b;
+      }
+      /*Responsive*/
+      @media screen and (max-width: 500px) {
+        .form .column {
+          flex-wrap: wrap;
+        }
+        .form :where(.gender-option, .gender) {
+          row-gap: 15px;
+        }
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <header style="font-weight: bold; font-size: x-large;">Register Employee</header>
+      <form action="{% url 'addemployee' %}" class="form" method="POST">
+        {% csrf_token %}
+        {% comment %} {{ record }} {% endcomment %}
+            <div class="column">
+              <div style="column-width: 1100px;">
+                <div class="input-box">
+                  <label>Full Name</label>
+                  <input type="text" placeholder="First name     Middle name     Last name" required name="fullname"/>
+                </div>
+              </div>
+              <div style="column-width: 75px">
+                <div class="input-box">
+                  <label>Age</label>
+                  <input type="number" required name="age"/>
+                </div>
+              </div>
+            </div>
+            
+
+        <div class="input-box">
+          <label>Email Address</label>
+          <input type="email" required name="emailadd"/>
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Phone Number</label>
+            <input type="number" required name="contactno" maxlength="11"/>
+          </div>
+          <div class="input-box">
+            <label>Hire Date</label>
+            <input type="date" required name="hiredate"/>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="designation" style="column-width: 320px;">
+            <br>
+            <label for="design">Designation</label><br>
+            <div class="select-box">
+                <select name="design" id="design">
+                  <option value="none" selected disabled hidden>Select an Option</option>
+                  {% for d in designs %}
+                  <option value="{{ d.design }}">{{d.design}}</option>
+                  {% endfor %}
+                </select></label>
+            </div>
+          </div>
+          <div class="Salary" style="column-width: 320px">
+            <div class="input-box">
+              <label>Salary</label>
+              <input type="number" required name="salary"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="telephone">
+          <br>
+          <label for="tele">Telephone</label><br>
+          <div class="select-box">
+            <select multiple data-placeholder="Choose" class="chosen-select" name="telephone" id="tele">
+              <option value=""></option>
+              {% for t in teles %}
+                <option value="{{ t.id }}">{{ t.tele }}</option>
+              {% endfor %}
+            </select></label>
+          </div>
+        </div>
+
+        {% comment %} <div class="telephone">
+          <br>
+          <label for="tele">Telephone</label><br>
+          <div class="select-box">
+              <select name="telephone" id="tele" multiple>
+                {% for t in teles %}
+                <option value="{{ t.tele }}">{{ t.tele }}</option>
+                {% endfor %}
+              </select></label>
+          </div>
+        </div>
+         {% endcomment %}
+
+        
+
+        <!-- <div class="gender-box">
+          <h3>Gender</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" checked />
+              <label for="check-male">male</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="gender" />
+              <label for="check-female">Female</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-other" name="gender" />
+              <label for="check-other">prefer not to say</label>
+            </div>
+          </div>
+        </div> -->
+        <div class="input-box address">
+          <label>Address</label>
+          <input type="text" required name="add"/>
+          <div class="column">
+            </div>
+          <!-- <input type="text" placeholder="Enter your city" required />
+          </div>
+          <div class="column">
+            <input type="text" placeholder="Enter your region" required />
+            <input type="number" placeholder="Enter postal code" required />
+          </div>
+        </div> -->
+        {% comment %} <button type='submit'>Submit</button> {% endcomment %}
+        <input type="submit" value="Save" style="background-color: #3a7fc2; color: #ffffff;"/>
+      </form>
+    </section>
+    <script>
+      $(".chosen-select").chosen({
+      no_results_text: "Oops, nothing found!"
+    })
+    </script>
+  </body>
+</html>
