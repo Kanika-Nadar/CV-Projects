@@ -1,4 +1,4 @@
-# CV-Projects-GitHub
+# CV-Projects
  
 This repository contains the following projects:
 
