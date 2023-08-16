@@ -10,7 +10,7 @@ This repository contains the following projects:
 
 [Text Scanner](https://github.com/Kanika-Nadar/CV-Projects-GitHub/blob/7b1539dc0a9892b9166079c0ff53c954777e4d60/Scan%20To%20Text%20-%20Copy.vi)
 
-[House Prices Prediction Model]()
+[House Prices Prediction Model](https://github.com/Kanika-Nadar/CV-Projects/blob/0194b6c91ca486730453390a4952fe769038f4ca/House_Prices_Prediction.ipynb)
 
 [Signature and Face Recognition System](https://github.com/Kanika-Nadar/CV-Projects-GitHub/tree/cb9f630fb81c4babd275eb3bc3c567e72e710cac/Biometrics%20System)
 
