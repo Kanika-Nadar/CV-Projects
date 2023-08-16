@@ -10,4 +10,6 @@ This repository contains the following projects:
 
 [Signature and Face Recognition System](https://github.com/Kanika-Nadar/CV-Projects-GitHub/tree/cb9f630fb81c4babd275eb3bc3c567e72e710cac/Biometrics%20System)
 
+[EzeePlay](https://github.com/Kanika-Nadar/CV-Projects-GitHub/blob/d2ed91c4255695dc4379d08bf332e61e26c3b459/EzeePlay.c)
+
 
